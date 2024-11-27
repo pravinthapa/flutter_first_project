@@ -1,81 +1,49 @@
 import 'package:flutter_new_project/widgets/gap.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_new_project/view/area_circle_view.dart';
+import 'package:flutter_new_project/view/arthmetic_view.dart';
+import 'package:flutter_new_project/view/simple_interest_view.dart';
 
-class ArithmeticView extends StatefulWidget {
-  const ArithmeticView({super.key});
-
-  @override
-  State<ArithmeticView> createState() => _ArithmeticViewState();
-}
-
-class _ArithmeticViewState extends State<ArithmeticView> {
-  int first = 0;
-  int second = 0;
-  int result = 0;
+class DashboardView extends StatelessWidget {
+  const DashboardView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("First Assignment"),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            TextField(
-              onChanged: (value) => first = int.parse(value),
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "First number",
-              ),
-              keyboardType: TextInputType.number,
-            ),
-            gap8y,
-            TextField(
-              onChanged: (value) => second = int.parse(value),
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Second number",
-              ),
-              keyboardType: TextInputType.number,
-            ),
-            gap8y,
-            Text(
-              "Result: $result",
-              style: const TextStyle(fontSize: 22),
-            ),
+            SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ArithmeticView())),
+                    child: const Text("Arithmetic"))),
             gap8y,
             SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      result = first + second;
-                    });
-                  },
-                  child: const Text("Addition")),
-            ),
+                width: double.infinity,
+                child: ElevatedButton(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SimpleInterestView())),
+                    child: const Text("Simple Interest"))),
             gap8y,
             SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      result = first - second;
-                    });
-                  },
-                  child: const Text("Subtraction")),
-            ),
+                width: double.infinity,
+                child: ElevatedButton(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AreaCircleView())),
+                    child: const Text("Area Of Circle"))),
             gap8y,
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      result = first * second;
-                    });
-                  },
-                  child: const Text("Multiplication")),
-            ),
           ],
         ),
       ),
